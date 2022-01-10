@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>    
+    <div id="root"></div>
+    <!-- react js = It can be make interactive UI like engene. -->
+    <!-- react-dom = It would be library or package for putting elements in body tag. -->
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <!-- React-dom을 사용하여 Element,property,content를 추가하는 어려운(정석적인) 방법 -->
+    <script>
+        const root = document.getElementById("root");
+        const span = React.createElement(
+            "span", 
+            { id: "sexy-span", style:{color: "red"}}, 
+            "Hello I'm a span!"
+            );
+
+        const btn = React.createElement("button", null, "Click me");
+
+        // show it to the user.
+        ReactDOM.render(span, root);
+    </script>
+    <!-- React JS의 요점은 JS 시작하여 모든 HTML을 처리할 수 있다. 
+        Vanila JS의 HTML 제작 -> Javascript처리 순서와 반대 -->
+</body>
+</html>
