@@ -15,16 +15,24 @@
     <!-- React-dom을 사용하여 Element,property,content를 추가하는 어려운(정석적인) 방법 -->
     <script>
         const root = document.getElementById("root");
-        const span = React.createElement(
-            "span", 
-            { id: "sexy-span", style:{color: "red"}}, 
-            "Hello I'm a span!"
-            );
-
-        const btn = React.createElement("button", null, "Click me");
+        const h3 = React.createElement(
+            "h3", 
+            {
+                onMouseEnter: () => console.log("mouse enter"),
+            }, 
+            "Hello I'm a h3!"
+        );
+        const btn = React.createElement(
+            "button", 
+            {
+                onClick: () => console.log("i'm clicked!"),
+            }, 
+            "Click me"
+        );
+        const container = React.createElement("div", null, [h3, btn]);
 
         // show it to the user.
-        ReactDOM.render(span, root);
+        ReactDOM.render(container, root);
     </script>
     <!-- React JS의 요점은 JS 시작하여 모든 HTML을 처리할 수 있다. 
         Vanila JS의 HTML 제작 -> Javascript처리 순서와 반대 -->
