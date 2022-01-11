@@ -14,23 +14,17 @@
     <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <!-- React-dom을 사용하여 Element,property,content를 추가하는 어려운(정석적인) 방법 -->
+    <!-- <script> -->
     <script type="text/babel;">
+    
         const root = document.getElementById("root");
-        const Title = (
+        const Title = () => (
             <h3 id="title" onMouseEnter={() => console.log("mouse enter")}>
                 Hello I'm a title
             </h3>
         );
 
-        // const h3 = React.createElement(
-        //     "h3", 
-        //     {
-        //         onMouseEnter: () => console.log("mouse enter"),
-        //     }, 
-        //     "Hello I'm a h3!"
-        // );
-
-        const Button = (
+        const Button = () => (
             <button 
                 style={{
                     backgroundColor: "tomato",
@@ -40,17 +34,17 @@
                 Click me
             </button>
         );
-        // const btn = React.createElement(
-        //     "button", 
-        //     {
-        //         onClick: () => console.log("i'm clicked!"),
-        //     }, 
-        //     "Click me"
-        // );
-        const container = React.createElement("div", null, [Title, Button]);
 
+        // html 태그와 구분하기 위해서 직접생성한 컴포넌트는 앞이 대문자로 선언.
+        const Container = () => (
+        <div>
+            <Title/> 
+            <Button/>
+        </div>
+        
+        );
         // show it to the user.
-        ReactDOM.render(container, root);
+        ReactDOM.render(<Container/>, root);
     </script>
     <!-- React JS의 요점은 JS 시작하여 모든 HTML을 처리할 수 있다. 
         Vanila JS의 HTML 제작 -> Javascript처리 순서와 반대 -->
