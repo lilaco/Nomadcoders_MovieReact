@@ -12,24 +12,42 @@
     <!-- react-dom = It would be library or package for putting elements in body tag. -->
     <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <!-- React-dom을 사용하여 Element,property,content를 추가하는 어려운(정석적인) 방법 -->
-    <script>
+    <script type="text/babel;">
         const root = document.getElementById("root");
-        const h3 = React.createElement(
-            "h3", 
-            {
-                onMouseEnter: () => console.log("mouse enter"),
-            }, 
-            "Hello I'm a h3!"
+        const Title = (
+            <h3 id="title" onMouseEnter={() => console.log("mouse enter")}>
+                Hello I'm a title
+            </h3>
         );
-        const btn = React.createElement(
-            "button", 
-            {
-                onClick: () => console.log("i'm clicked!"),
-            }, 
-            "Click me"
+
+        // const h3 = React.createElement(
+        //     "h3", 
+        //     {
+        //         onMouseEnter: () => console.log("mouse enter"),
+        //     }, 
+        //     "Hello I'm a h3!"
+        // );
+
+        const Button = (
+            <button 
+                style={{
+                    backgroundColor: "tomato",
+                }}
+                onClick={() => console.log("I'm clicked!")}
+            >
+                Click me
+            </button>
         );
-        const container = React.createElement("div", null, [h3, btn]);
+        // const btn = React.createElement(
+        //     "button", 
+        //     {
+        //         onClick: () => console.log("i'm clicked!"),
+        //     }, 
+        //     "Click me"
+        // );
+        const container = React.createElement("div", null, [Title, Button]);
 
         // show it to the user.
         ReactDOM.render(container, root);
