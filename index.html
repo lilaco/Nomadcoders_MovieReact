@@ -8,32 +8,36 @@
 </head>
 <body>    
     <div id="root"></div>
-    <!-- react js = It can be make interactive UI like engene. -->
-    <!-- react-dom = It would be library or package for putting elements in body tag. -->
-    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <!-- React-dom을 사용하여 Element,property,content를 추가하는 어려운(정석적인) 방법 -->
     <script type="text/babel">
-        const root = document.getElementById("root");
         function App(){
-            const [counter, setCounter] = React.useState(0);
-            const onClick = () => {
-                //setCounter(counter + 1);
-                //more safety way.
-                setCounter((current) => current + 1);
+
+            const [minutes, setMinutes] = React.useState();
+            const onChange = (event) => {
+                setMinutes(event.target.value);
             };
             return (
                 <div>
-                    <h3>Total clicks: {counter}</h3>
-                    <button onClick={onClick}>Click me</button>
+                    <h1>Super Converter</h1>
+                    <label htmlFor="minutes">Minutes</label>
+                    <input 
+                        value ={minutes}
+                        id="minutes" 
+                        placeholder="Minutes" 
+                        type="number"
+                        onChange={onChange}
+                    />
+                    <label htmlFor="hours">Hours</label>
+                    <input id="hours" placeholder="Hours" type="number"/>
+                    <h4>You want to convert {minutes}</h4>
                 </div>
             );
         }
-
+        const root = document.getElementById("root");
         ReactDOM.render(<App/>, root);
     </script>
-    <!-- React JS의 요점은 JS 시작하여 모든 HTML을 처리할 수 있다. 
-        Vanila JS의 HTML 제작 -> Javascript처리 순서와 반대 -->
+    
 </body>
 </html>
