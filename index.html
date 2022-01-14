@@ -14,33 +14,39 @@
     <script type="text/babel">
         function App(){
 
-            const [minutes, setMinutes] = React.useState();
+            const [amount, setAmount] = React.useState();
+            const [flipped, setFlipped] = React.useState(false);
             const onChange = (event) => {
                 setMinutes(event.target.value);
             };
-            const reset = () => setMinutes(0);
+            const reset = () => setAmount(0);
+            const onFlip = () => setFlipped((current)=> !current);// false로 선언했던 값 반전시키기
+
             return (
                 <div>
                     <h1>Super Converter</h1>
                     <label htmlFor = "minutes">Minutes</label>
                     <input 
-                        value = {minutes}
+                        value = {flipped ? amount*60 : amount}
                         id = "minutes" 
                         placeholder = "Minutes" 
                         type = "number"
                         onChange = {onChange}
+                        disabled = {flipped}
                     />
                     <label htmlFor = "hours">Hours</label>
                     <input 
-                        value = {Math.round(minutes/60)}
+                        value = {flipped ? amount : Math.round(amount/60)}
                         id = "hours" 
                         placeholder = "Hours" 
                         type = "number"
-                        disabled
+                        onChange = {onChange}
+                        disabled = {!flipped}
                     />
                         
-                    <h4>You want to convert {minutes}</h4>
+                    <h4>You want to convert {amount}</h4>
                     <button onClick = {reset} >Reset</button>
+                    <button onClick = {onFlip} >Flip</button>
                 </div>
                 
             );
