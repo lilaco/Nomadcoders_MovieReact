@@ -17,11 +17,13 @@
             const [amount, setAmount] = React.useState();
             const [flipped, setFlipped] = React.useState(false);
             const onChange = (event) => {
-                setMinutes(event.target.value);
+                setAmount(event.target.value);
             };
             const reset = () => setAmount(0);
-            const onFlip = () => setFlipped((current)=> !current);// false로 선언했던 값 반전시키기
-
+            const onFlip = () => {
+                reset();
+                setFlipped((current)=> !current);// false로 선언했던 값 반전시키기
+            };
             return (
                 <div>
                     <h1>Super Converter</h1>
