@@ -15,40 +15,40 @@
         function App(){
 
             const [amount, setAmount] = React.useState();
-            const [flipped, setFlipped] = React.useState(false);
+            const [inverted, setinverted] = React.useState(false);
             const onChange = (event) => {
                 setAmount(event.target.value);
             };
             const reset = () => setAmount(0);
-            const onFlip = () => {
+            const onInvert = () => {
                 reset();
-                setFlipped((current)=> !current);// false로 선언했던 값 반전시키기
+                setinverted((current)=> !current);// false로 선언했던 값 반전시키기
             };
             return (
                 <div>
                     <h1>Super Converter</h1>
                     <label htmlFor = "minutes">Minutes</label>
                     <input 
-                        value = {flipped ? amount*60 : amount}
+                        value = {inverted ? amount*60 : amount}
                         id = "minutes" 
                         placeholder = "Minutes" 
                         type = "number"
                         onChange = {onChange}
-                        disabled = {flipped}
+                        disabled = {inverted}
                     />
                     <label htmlFor = "hours">Hours</label>
                     <input 
-                        value = {flipped ? amount : Math.round(amount/60)}
+                        value = {inverted ? amount : Math.round(amount/60)}
                         id = "hours" 
                         placeholder = "Hours" 
                         type = "number"
                         onChange = {onChange}
-                        disabled = {!flipped}
+                        disabled = {!inverted}
                     />
                         
                     <h4>You want to convert {amount}</h4>
                     <button onClick = {reset} >Reset</button>
-                    <button onClick = {onFlip} >Flip</button>
+                    <button onClick = {onInvert} >{inverted ? "Turn back" : "Invert"}</button>
                 </div>
                 
             );
